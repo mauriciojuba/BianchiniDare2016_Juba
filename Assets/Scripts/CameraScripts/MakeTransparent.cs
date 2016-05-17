@@ -1,55 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MakeTransparent : MonoBehaviour {
+public class MakeTransparent : MonoBehaviour
+{
 
-    private Renderer Render;
-    private string initialShader;
-    public bool turnOpaque = false;
-    public bool beTransparent;
-    float timer;
-    private Color alphaDown;
-
+    Material Standard, Transparent_Buildings, Transparent_Enemys;
+    float count = 10;
+    Color transColor;
+    Renderer render;
 
     void Start()
     {
-        Render = GetComponent<Renderer>();
+        render = GetComponent<Renderer>();
+        Transparent_Buildings = Resources.Load("Materials/BuildingsTransparent") as Material;
+        Transparent_Enemys = Resources.Load("Materials/EnemysTransparent") as Material;
+        Standard = render.sharedMaterial;
+        count = 10;
+        if (this.CompareTag("Building")) render.sharedMaterial = Transparent_Buildings;
+        else if (this.CompareTag("Enemy")) render.sharedMaterial = Transparent_Enemys;
+
     }
     void Update()
     {
-
-        Debug.Log(timer);
-        if (beTransparent)
+        transColor.a = Mathf.Abs(count) / 10;
+        Transparent_Enemys.color = transColor;
+        Transparent_Buildings.color = transColor;
+    }
+    void LateUpdate()
+    {
+        count += Time.deltaTime;
+        if (transColor.a >= 1)
         {
-            Render.material.shader = Shader.Find("Transparent/Diffuse");
-            timer = 0;
-            alphaDown.a = 0.2f;
-            Render.material.color = alphaDown;
-            beTransparent = false;
-        }
-        
-        if(!beTransparent)
-        {
-            timer += Time.deltaTime;
-            if(timer >= 0.5f)
-            {
-                Destroy(this);
-            }
+            Destroy(this);
         }
     }
     public void makeTransparent()
     {
-        if (initialShader == null) {
-            initialShader = Render.material.shader.name;
-        }
-        Mudar();
-    }
-    void Mudar()
-    {
-        beTransparent = true;
+        count = 9;
     }
     void OnDestroy()
     {
-        Render.material.shader = Shader.Find(""+initialShader);
+        render.sharedMaterial = Standard;
     }
 }

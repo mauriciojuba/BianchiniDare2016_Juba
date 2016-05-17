@@ -1,42 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CheckForObstructedView : MonoBehaviour {
+public class CheckForObstructedView : MonoBehaviour
+{
 
 
     private Camera myCamera;
-    private GameObject Player;
-    public LayerMask buildings;
+    public Transform Player;
+    public LayerMask ignorePlayer;
+    public Transform RayCam;
+    public float radiusSphere = 3;
 
     void Start()
     {
-        Player = GameObject.Find("Lyla");
         myCamera = Camera.main;
     }
     void Update()
     {
-        TestUpperFloor();
+        TestObstruction();
     }
-    void TestUpperFloor()
+    void TestObstruction()
     {
+        Ray ray = new Ray(Player.position, myCamera.transform.position - Player.position);
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(new Ray(myCamera.transform.position, myCamera.transform.forward),myCamera.transform.position.y - Player.transform.position.y,buildings);
-
-        Ray ray = new Ray(myCamera.transform.position, myCamera.transform.forward);
+        hits = Physics.SphereCastAll(ray,radiusSphere, RayCam.position.y, ignorePlayer);
         foreach (RaycastHit hit in hits)
         {
             Renderer R = hit.collider.GetComponent<Renderer>();
             if (R == null) continue;
-            MakeTransparent MT = R.GetComponent<MakeTransparent>();
-            if (MT == null)
+            if (hit.collider.GetComponent<MakeTransparent>() == null)
             {
-                MT = R.gameObject.AddComponent<MakeTransparent>();
+                hit.collider.gameObject.AddComponent<MakeTransparent>();
             }
             else
             {
-                MT.makeTransparent();
-                continue;
+                hit.collider.GetComponent<MakeTransparent>().makeTransparent();
             }
         }
     }
+   
+
 }
