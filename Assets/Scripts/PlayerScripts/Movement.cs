@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
     public bool isMoving;
     float newDirection, previousDirection;
     float turnValue;
+    bool crounching = false;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class Movement : MonoBehaviour {
         //jumping
         Move();
         Turning();
+        Crounch();
 
 
         //criar um script apenas para attack
@@ -96,5 +98,14 @@ public class Movement : MonoBehaviour {
             Vector3 heightCorrectedPoint = new Vector3(point.x, transform.position.y, point.z);
             transform.LookAt(heightCorrectedPoint);
         }
+    }
+    void Crounch()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            if (crounching) crounching = false;
+            else crounching = true;
+        }
+        anim.SetBool("Crounch", crounching);
     }
 }
