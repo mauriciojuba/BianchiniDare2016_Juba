@@ -28,7 +28,7 @@ public class MakeTransparent : MonoBehaviour
     }
     void LateUpdate()
     {
-        count += Time.deltaTime;
+        count += Time.deltaTime*5f;
         if (transColor.a >= 1)
         {
             Destroy(this);
@@ -36,7 +36,7 @@ public class MakeTransparent : MonoBehaviour
     }
     public void makeTransparent()
     {
-        count = 9;
+		count = 5;
     }
     void OnDestroy()
     {
