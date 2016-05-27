@@ -23,24 +23,13 @@ public class Movement : MonoBehaviour {
 
     void Update()
     {
-        lookAt();
-        //jumping
-        Move();
-        Turning();
-
-
-        //criar um script apenas para attack
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            attack.Attack();
-        }
-        else
-        {
-            anim.SetBool("isShooting", false);
-        }
-        //Nao esquecer
-
-
+		if(!Pause.paused){
+			lookAt();
+			//jumping
+			Move();
+			Turning();
+			Attack();
+		}
     }
 
 
@@ -97,4 +86,15 @@ public class Movement : MonoBehaviour {
             transform.LookAt(heightCorrectedPoint);
         }
     }
+
+	void Attack(){
+		if (Input.GetKeyUp(KeyCode.Mouse0))
+		{
+			attack.Attack();
+		}
+		else
+		{
+			anim.SetBool("isShooting", false);
+		}
+	}
 }

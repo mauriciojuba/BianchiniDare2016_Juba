@@ -1,9 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraScripts\MakeTransparent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemysScripts\CommonEnemys\AI_CommonEnemy.cs">
     <Files>
+      <File FileName="Assets\Scripts\EnemysScripts\CommonEnemys\AI_CommonEnemy.cs" Line="40" Column="61" />
+      <File FileName="Assets\Scripts\Utils\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlayerScripts\Laser.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraScripts\MakeTransparent.cs" Line="32" Column="30" />
+      <File FileName="Assets\Scripts\CameraScripts\MakeTransparent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utils\Pause.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerScripts\Movement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utils\SplashScreen.cs" Line="12" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
