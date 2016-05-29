@@ -77,17 +77,23 @@
     <Compile Include="Assets\Scripts\CameraScripts\CheckForObstructedView.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\MakeTransparent.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\TopDownCamera.cs" />
+    <Compile Include="Assets\Scripts\EnemysScripts\CommonEnemys\AI_CommonEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemysScripts\CommonEnemys\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EnemysScripts\CommonEnemys\EnemyRadar.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Attacking.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Laser.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Utils\AutoDestroy.cs" />
     <Compile Include="Assets\Scripts\Utils\BarrierHandler.cs" />
+    <Compile Include="Assets\Scripts\Utils\BuildingsHandler.cs" />
     <Compile Include="Assets\Scripts\Utils\Computer.cs" />
+    <Compile Include="Assets\Scripts\Utils\DangerUI.cs" />
     <Compile Include="Assets\Scripts\Utils\FloatingText\FloatingText.cs" />
     <Compile Include="Assets\Scripts\Utils\FloatingText\FloatingTextController.cs" />
     <Compile Include="Assets\Scripts\Utils\LivingObject.cs" />
+    <Compile Include="Assets\Scripts\Utils\Pause.cs" />
     <Compile Include="Assets\Scripts\Utils\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Utils\SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins AssetStore\_MK\_MKGlowSystem\_Shader\_MKBase\Cutout\MK_Cutout-Diffuse.shader" />
