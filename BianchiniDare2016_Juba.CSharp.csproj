@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Utils\AutoDestroy.cs" />
     <Compile Include="Assets\Scripts\Utils\BarrierHandler.cs" />
+    <Compile Include="Assets\Scripts\Utils\BuildingFloor.cs" />
     <Compile Include="Assets\Scripts\Utils\BuildingsHandler.cs" />
     <Compile Include="Assets\Scripts\Utils\Computer.cs" />
     <Compile Include="Assets\Scripts\Utils\DangerUI.cs" />
