@@ -15,7 +15,6 @@ public class Computer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (canSwitch && !openned) openDoor();
-        Debug.Log(canSwitch);
 	}
     void openDoor()
     {

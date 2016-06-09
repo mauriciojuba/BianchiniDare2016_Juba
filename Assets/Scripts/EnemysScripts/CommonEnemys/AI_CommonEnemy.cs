@@ -29,18 +29,24 @@ public class AI_CommonEnemy : MonoBehaviour {
 
     #region Patrol
     public Transform[] Waypoints;
-	int currentWaypoint;
+	int currentWaypoint = 0;
 	public float distanceToChangeWaypoint;
 
 	void Patroling(){
-		if(agent.remainingDistance >= distanceToChangeWaypoint){
-			agent.SetDestination(Waypoints[currentWaypoint].position);
-		}
-		else{
-			if(currentWaypoint==Waypoints.Length) currentWaypoint = 0;
-            else currentWaypoint++;
+        if (agent.remainingDistance <= distanceToChangeWaypoint)
+        {
+            if (currentWaypoint < Waypoints.Length - 1)
+            {
+                agent.ResetPath();
+                currentWaypoint++;
+            }
+            else
+            {
+                agent.ResetPath();
+                currentWaypoint = 0;
+            }
             agent.SetDestination(Waypoints[currentWaypoint].position);
-		}
+        }
 
         if (Eye.onRadar)
         {
@@ -79,6 +85,10 @@ public class AI_CommonEnemy : MonoBehaviour {
             DangerUI.Instance.onDanger();
             countToReturnPatroling = 0;
             state = new AIDelegate(Chasing);
+        }
+        else
+        {
+            DangerUI.Instance.NotDanger();
         }
     }
     #endregion
